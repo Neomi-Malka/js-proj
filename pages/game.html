@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מלך האחוזים - המשחק</title>
+    
+    <!-- שימוש באייקון בנתיב הראשי כדרישת המורה -->
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    
+    <link rel="stylesheet" href="../styles/game.css">
+</head>
+<body class="game-page">
+    <header class="game-header">
+        <div class="header-item">שחקן: <span id="display-username">טוען...</span></div>
+        <div class="header-item">זמן: <span id="timer">10</span> ⏳</div>
+        <div class="header-item">ניקוד: <span id="score">0</span> 🏆</div>
+    </header>
+
+    <main class="game-container">
+        <div class="story-card main-glass">
+            <h2 id="story-text">מכין את הניסוי...</h2>
+        </div>
+
+        <div id="main-drop-target" class="empty-slot">
+            <span>גרור לכאן</span>
+        </div>
+
+        <div class="options-area">
+            <div id="tubes-options" class="options-row"></div>
+            <div id="buttons-options" class="options-row"></div>
+        </div>
+    </main>
+
+    <button class="nav-btn-leaderboard" onclick="location.href='leaderboard.html'">🏆 טבלת שיאים</button>
+
+    <!-- מסך סיום חגיגי -->
+    <div id="finish-screen" class="hidden-overlay">
+        <div class="finish-content main-glass">
+            <h1 id="finish-title">הניסוי הושלם!</h1>
+            <p>סיימת בהצלחה את שלב <span id="completed-level"></span></p>
+            <div class="stars-container">
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+            </div>
+            <button onclick="location.href='leaderboard.html'" class="start-btn">לצפייה בשיאים</button>
+        </div>
+    </div>
+
+    <!-- קבצי שמע (נושא בונוס) -->
+    <audio id="sound-success" src="../sounds/success.mp3"></audio>
+    <audio id="sound-fail" src="../sounds/fail.mp3"></audio>
+
+    <script>
+        /**
+         * @file game_events.js - טיפול באירועי מקלדת ו-BOM
+         * עומד בדרישה: שימוש ב-event object ואירוע keydown
+         */
+        window.addEventListener('keydown', (event) => {
+            // בדיקה האם נלחץ מקש ה-Escape (שימוש ב-Event Property)
+            if (event.key === "Escape") {
+                // שימוש ב-window.confirm (BOM) לאישור יציאה מהמשחק
+                if (window.confirm("האם ברצונך לחזור לדף הבית?")) {
+                    window.location.href = "../index.html";
+                }
+            }
+        });
+    </script>
+    
+    <script src="../scripts/game.js"></script>
+</body>
+</html>

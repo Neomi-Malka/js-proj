@@ -1,0 +1,59 @@
+<html lang="he" dir="rtl">
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מלך האחוזים - לוח שיאים</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/game.css">
+</head>
+<body class="leaderboard-page">
+    <div class="glass-card leaderboard-box">
+        <h1 class="colorful-title">החוקרים המצטיינים 🧬🏆</h1>
+        
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>דירוג</th>
+                    <th>שם החוקר</th>
+                    <th>ניקוד</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- הנתונים ייטענו כאן מה-LocalStorage באמצעות JS -->
+                <tr class="top-player">
+                    <td>🥇</td>
+                    <td>נעמי</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>🥈</td>
+                    <td>דניאל</td>
+                    <td>85</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a href="../index.html" class="start-btn">חזרה לכניסה 🧪</a>
+        </div>
+    </div>
+    <script src="../scripts/leaderboard.js"></script>
+</body>
+</html>
+<div class="glass-card leaderboard-container">
+    <h2>החוקרים המצטיינים של היום 🧬</h2>
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th>מקום</th>
+                <th>שם החוקר</th>
+                <th>ניקוד</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+            <!-- כאן יופיעו השיאים מה-LocalStorage -->
+        </tbody>
+    </table>
+    <a href="../index.html" class="start-btn">משחק חדש 🧪</a>
+</div>

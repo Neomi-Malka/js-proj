@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מלך האחוזים - כניסה</title>
+    <link rel="stylesheet" href="styles/game.css">
+</head>
+<body class="game-page login-layout">
+    <div class="login-card main-glass">
+        <h1>מלך האחוזים 🧪</h1>
+        <p>ברוכים הבאים למעבדה הלאומית לאחוזים!</p>
+        
+        <input type="text" id="username-input" placeholder="הכנס שם שחקן..." class="styled-input">
+        
+        <div class="level-selector">
+            <p>בחר רמת קושי:</p>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="level" value="1" checked> רמת מתחילים (א')
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="level" value="2"> רמת מתקדמים (ב')
+                </label>
+            </div>
+        </div>
+
+        <button onclick="startGame()" class="start-btn">התחל במחקר! 🚀</button>
+    </div>
+
+    <script>
+        function startGame() {
+            const nameField = document.getElementById('username-input');
+            const name = nameField.value.trim() || "אורח";
+            const level = document.querySelector('input[name="level"]:checked').value;
+            
+            localStorage.setItem('currentPlayer', JSON.stringify({ name: name, level: parseInt(level) }));
+            window.location.href = 'pages/game.html';
+        }
+    </script>
+</body>
+</html>
