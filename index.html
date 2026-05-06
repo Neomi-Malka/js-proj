@@ -2,49 +2,28 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מלך האחוזים - כניסה</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="./styles/game.css">
+    <title>מעבדת האחוזים - כניסה</title>
+    <link rel="stylesheet" href="css/game.css">
 </head>
-<body class="game-page login-layout">
-    <div class="login-card main-glass">
-        <h1>מלך האחוזים 🧪</h1>
-        <p>ברוכים הבאים למעבדה הלאומית לאחוזים!</p>
-        
-        <input type="text" id="username-input" placeholder="הכנס שם שחקן..." class="styled-input">
-        
-        <div class="level-selector">
-            <p>בחר רמת קושי:</p>
-            <div class="radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="level" value="1" checked> רמת מתחילים (א')
-                </label>
-                <label class="radio-label">
-                    <input type="radio" name="level" value="2"> רמת מתקדמים (ב')
-                </label>
+<body class="game-page login-layout"> <div class="main-glass login-card">
+        <h1>🧪 מעבדת האחוזים</h1>
+        <form id="login-form">
+            <input type="text" id="username" class="styled-input" placeholder="הכנס שם משתמש" required>
+            
+            <select id="difficulty" class="styled-input">
+                <option value="1">רמה 1 - מתחילים</option>
+                <option value="2">רמה 2 - מתקדמים</option>
+            </select>
+
+            <div class="button-group">
+                <button type="submit" class="start-btn">התחל משחק</button>
+                <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+                    <a href="pages/instructions.html" class="info-btn" style="text-decoration:none; text-align:center; line-height:40px;">הוראות</a>
+                    <a href="pages/leaderboard.html" class="leaderboard-btn" style="text-decoration:none; text-align:center; line-height:40px;">שיאים</a>
+                </div>
             </div>
-        </div>
-
-        <div class="button-group">
-            <button onclick="startGame()" class="start-btn">התחל במחקר! 🚀</button>
-            <button onclick="location.href='pages/instructions.html'" class="info-btn">איך משחקים? 🔬</button>
-            <button onclick="location.href='pages/leaderboard.html'" class="leaderboard-btn">טבלת שיאים 🏆</button>
-        </div>
+        </form>
     </div>
-
-    <script>
-        const startGame = () => {
-            const nameField = document.getElementById('username-input');
-            const name = nameField.value.trim() || "אורח";
-            const level = document.querySelector('input[name="level"]:checked').value;
-            localStorage.setItem('currentPlayer', JSON.stringify({ 
-                name: name, 
-                level: parseInt(level),
-                date: new Date().toLocaleDateString()
-            }));
-            window.location.href = 'pages/game.html?level=' + level;
-        };
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -2,34 +2,42 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מלך האחוזים - המשחק</title>
-    <link rel="stylesheet" href="../styles/game.css">
+    <title>המעבדה - משחק</title>
+    <link rel="stylesheet" href="../css/game.css">
 </head>
 <body class="game-page">
-    <div class="game-header">
-        <div class="header-item" id="user-display">שחקן: </div>
-        <div class="header-item" id="timer-display">זמן: ⏳</div>
-        <div class="header-item" id="score-display">ניקוד: 0 🏆</div>
+    <header class="game-header">
+        <div class="header-item">שחקן: <span id="display-username"></span></div>
+        <div class="header-item">זמן: <span id="timer">15</span></div>
+        <div class="header-item">ניקוד: <span id="score">0</span></div>
+    </header>
+
+    <div class="main-glass story-card">
+        <p id="story-text">טוען שאלה...</p>
     </div>
 
-    <div class="story-card main-glass" id="question-text">
-        טוען שאלה...
-    </div>
-
-    <div class="empty-slot" id="main-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div id="main-drop-target" class="empty-slot">
         <span>גרור לכאן</span>
     </div>
 
     <div class="options-area">
-        <div id="tube-row" class="options-row"></div>
+        <div id="tubes-options" class="options-row"></div>
         <div id="buttons-options" class="options-row"></div>
     </div>
 
-    <!-- קבצי שמע - שימי לב לנתיב המדויק עם S גדולה -->
-    <audio id="sound-success" src="../Sounds/success.mp3"></audio>
-    <audio id="sound-fail" src="../Sounds/fail.mp3"></audio>
+    <div id="finish-screen" class="hidden-overlay">
+        <div class="main-glass login-card">
+            <h2>סיום רמה! 🏆</h2>
+            <p>כל הכבוד, סיימת את השלב.</p>
+            <div class="star">⭐</div>
+            <br>
+            <a href="../index.html" class="start-btn">חזרה לתפריט</a>
+        </div>
+    </div>
 
-    <script src="../scripts/game.js"></script>
+    <audio id="sound-success" src="../audio/success.mp3" preload="auto"></audio>
+    <audio id="sound-fail" src="../audio/fail.mp3" preload="auto"></audio>
+
+    <script src="../js/game.js"></script>
 </body>
 </html>

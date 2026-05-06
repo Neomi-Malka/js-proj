@@ -1,61 +1,27 @@
-<html lang="he" dir="rtl">
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>מלך האחוזים - לוח שיאים</title>
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/game.css">    
-    <link rel="icon" type="image/x-icon" href="../icon.png">
-
+    <title>טבלת שיאים</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body class="leaderboard-page">
-    <div class="glass-card leaderboard-box">
-        <h1 class="colorful-title">החוקרים המצטיינים 🧬🏆</h1>
-        
-        <table class="leaderboard-table">
+    <div class="glass-card">
+        <h1>אלופי המעבדה 🏆</h1>
+        <table style="width: 100%; color: white; border-collapse: collapse;">
             <thead>
-                <tr>
+                <tr style="border-bottom: 2px solid white;">
                     <th>דירוג</th>
-                    <th>שם החוקר</th>
+                    <th>שם</th>
                     <th>ניקוד</th>
                 </tr>
             </thead>
             <tbody id="leaderboard-body">
-                <!-- הנתונים ייטענו כאן מה-LocalStorage באמצעות JS -->
-                <tr class="top-player">
-                    <td>🥇</td>
-                    <td>נעמי</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>🥈</td>
-                    <td>דניאל</td>
-                    <td>85</td>
-                </tr>
-            </tbody>
+                </tbody>
         </table>
-
-        <div class="actions">
-            <a href="../index.html" class="start-btn">חזרה לכניסה 🧪</a>
-        </div>
+        <br>
+        <a href="../index.html" class="link-btn">חזרה לכניסה</a>
     </div>
-    <script src="../scripts/leaderboard.js"></script>
+    <script src="../js/leaderboard.js"></script>
 </body>
 </html>
-<div class="glass-card leaderboard-container">
-    <h2>החוקרים המצטיינים של היום 🧬</h2>
-    <table class="leaderboard-table">
-        <thead>
-            <tr>
-                <th>מקום</th>
-                <th>שם החוקר</th>
-                <th>ניקוד</th>
-            </tr>
-        </thead>
-        <tbody id="leaderboard-body">
-            <!-- כאן יופיעו השיאים מה-LocalStorage -->
-        </tbody>
-    </table>
-    <a href="../index.html" class="start-btn">משחק חדש 🧪</a>
-</div>

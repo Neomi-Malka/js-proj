@@ -1,0 +1,213 @@
+/**
+ * @file game.css - עיצוב מאוחד: מעבדה מקורית + כניסה והוראות בסגנון שיאים
+ */
+
+/* הגדרות כלליות */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden; /* מניעת גלילה כדרישת המורה */
+}
+
+.game-page {
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- עיצוב דף הכניסה וההוראות (בסגנון טבלת השיאים) --- */
+
+.login-layout {
+    justify-content: center;
+}
+
+/* כרטיסיית זכוכית מעוצבת - שקיפות וטשטוש כמו בשיאים */
+.main-glass, .login-card {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 30px !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2) !important;
+    padding: 50px !important;
+    width: 450px;
+    text-align: center;
+    color: white;
+}
+
+/* כותרת הדף */
+.main-glass h1 {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+}
+
+/* תיבות הקלט - גדולות וברורות */
+.styled-input {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 12px;
+    font-size: 1.2rem;
+    background: rgba(255,255,255,0.9);
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* כפתור התחל משחק - מעוגל עם הדרגתיות כחול-ירוק */
+.start-btn {
+    background: linear-gradient(to right, #3498db, #2ecc71) !important;
+    color: white !important;
+    padding: 15px 45px;
+    border: none;
+    border-radius: 50px !important; /* מעוגל כמו בתמונת השיאים */
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.start-btn:hover {
+    background: linear-gradient(to right, #2980b9, #27ae60) !important;
+    transform: scale(1.05);
+}
+
+/* כפתורי הוראות ושיאים - קישורי טקסט סגולים כמו בשיאים */
+.info-btn, .leaderboard-btn {
+    background: none !important;
+    color: #9b59b6 !important; /* סגול יפה */
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+    border: none !important;
+    transition: 0.3s;
+}
+
+.info-btn:hover, .leaderboard-btn:hover {
+    color: #8e44ad !important;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* --- רכיבי דף המשחק (נשארים בדיוק כפי שהיו) --- */
+
+.game-header {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.header-item {
+    background: white;
+    border: 3px solid #3498db;
+    border-radius: 15px;
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.story-card {
+    width: 65%;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.empty-slot {
+    width: 220px;
+    height: 280px;
+    border: 5px dashed #3498db;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.empty-slot img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.correct-glow {
+    border-color: #2ecc71 !important;
+    box-shadow: 0 0 40px #2ecc71;
+}
+
+.options-area {
+    margin-top: auto;
+    padding-bottom: 120px;
+}
+
+.options-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.mini-tube-img {
+    width: 100px;
+    cursor: grab;
+}
+
+.answer-btn {
+    padding: 12px 30px;
+    font-size: 1.3rem;
+    border-radius: 15px;
+    border: 3px solid #3498db;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* מסך סיום */
+.hidden-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.show-finish {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.star {
+    font-size: 4rem;
+    display: inline-block;
+    animation: sparkle 1s infinite alternate;
+}
+
+@keyframes sparkle {
+    to { transform: scale(1.3); filter: brightness(1.2); }
+}
