@@ -181,6 +181,21 @@ const endGame = () => {
     document.getElementById('completed-level').textContent = (savedData.level == 1 ? "מתחילים (א')" : "מתקדמים (ב')");
     finishScreen.classList.add('show-finish');
 };
+// בתוך פונקציית loadQuestion, כשאת יוצרת את ה-img:
+img.addEventListener('touchstart', (e) => {
+    // מאפשר לזהות לחיצה בטלפון כהתחלת גרירה
+    if (!isProcessing) {
+        window.selectedTube = opt; 
+        img.style.opacity = "0.5";
+    }
+});
+
+// הוספת אפשרות ללחוץ על אזור היעד (בנוסף לגרירה)
+dropZone.addEventListener('click', () => {
+    if (window.selectedTube == currentLevelQuestions[currentIndex].ans) {
+        handleFinish(true);
+    }
+});
 
 // הפעלת המשחק לראשונה
 loadQuestion();

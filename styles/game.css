@@ -138,3 +138,31 @@ body, html {
     .empty-slot { width: 140px; height: 200px; }
     .answer-btn { padding: 8px 15px; font-size: 1rem; }
 }
+/* אזור האפשרויות - גמיש ורספונסיבי */
+.options-row {
+    display: flex;
+    flex-wrap: wrap; /* מאפשר למבחנות לרדת שורה במקום להצטמצם */
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+}
+
+.mini-tube-img {
+    width: 80px; /* הגדלה משמעותית של המבחנה */
+    height: auto;
+    cursor: grab;
+    touch-action: none; /* חיוני למניעת גלילת הדף בזמן גרירה */
+}
+
+/* התאמה ספציפית למסכים קטנים מאוד */
+@media (max-width: 480px) {
+    .mini-tube-img {
+        width: 100px; /* במובייל הן יהיו אפילו גדולות יותר */
+    }
+    
+    .empty-slot {
+        width: 160px;
+        height: 220px;
+    }
+}
