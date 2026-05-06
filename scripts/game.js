@@ -78,7 +78,7 @@ const loadQuestion = () => {
     finalOptions.forEach(opt => {
         // יצירת מבחנה דינאמית
         const img = document.createElement('img');
-        img.src = `../images/tube_${opt}.png`;
+        img.src = "../images/tube_" + opt + ".png";
         img.className = 'mini-tube-img';
         img.draggable = true;
         img.addEventListener('dragstart', (e) => {
