@@ -1,10 +1,14 @@
+/**
+ * @file game.css - עיצוב מרכזי למעבדת האחוזים
+ */
+
 /* הגדרות כלליות */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow: hidden;
+    overflow: hidden; /* מניעת גלילה כדרישת המורה */
 }
 
 .game-page {
@@ -16,7 +20,7 @@ body, html {
     height: 100vh;
 }
 
-/* סגנון כרטיסיית זכוכית מעוצבת */
+/* סגנון כרטיסיית זכוכית מעוצבת - Main Glass */
 .main-glass {
     background: rgba(255, 255, 255, 0.9);
     border: 3px solid #3498db;
@@ -44,17 +48,37 @@ body, html {
     font-size: 1.2rem;
     outline: none;
 }
-
-.level-selector {
-    margin-bottom: 30px;
-    font-weight: bold;
-}
-
-.radio-group {
+.button-group {
     display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* רווח קבוע בין הכפתורים */
+    margin-top: 20px;
 }
+
+/* עיצוב כפתור השיאים בדף הכניסה */
+.leaderboard-btn {
+    background: #f39c12; /* צבע כתום/זהב לשיאים */
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 200px; /* רוחב אחיד לכפתורי המשנה */
+}
+
+.leaderboard-btn:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+}
+
+.info-btn {
+    width: 200px; /* רוחב אחיד גם לכפתור ההוראות */
+}
+
 
 .start-btn {
     background: #2ecc71;
@@ -70,10 +94,26 @@ body, html {
 
 .start-btn:hover {
     background: #27ae60;
-    transform: translateY(-3px) scale(1.05);
 }
 
-/* רכיבי המשחק */
+/* כפתור הוראות חדש */
+.info-btn {
+    background: #3498db;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.info-btn:hover {
+    background: #2980b9;
+}
+
+/* רכיבי דף המשחק */
 .game-header {
     display: flex;
     gap: 20px;
@@ -96,17 +136,15 @@ body, html {
     text-align: center;
 }
 
-/* השינוי כאן: הקטנה קלה של תיבת הגרירה כדי לפנות מקום למטה */
 .empty-slot {
     width: 220px;
-    height: 280px; /* הוקטן מ-320 ל-280 */
+    height: 280px; /* הקטנה לפנות מקום למטה */
     border: 5px dashed #3498db;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s;
 }
 
 .correct-glow {
@@ -114,10 +152,10 @@ body, html {
     box-shadow: 0 0 40px #2ecc71;
 }
 
-/* השינוי כאן: הגדלת המרווח התחתון משמעותית */
+/* הגבהת אזור הכפתורים כדי שלא ייחתכו */
 .options-area {
     margin-top: auto;
-    padding-bottom: 120px; /* הגדלתי מ-80 ל-120 כדי להעלות את הכפתורים גבוה יותר */
+    padding-bottom: 120px;
 }
 
 .options-row {
@@ -128,40 +166,26 @@ body, html {
 }
 
 .mini-tube-img {
-    width: 100px; /* הקטנה קלה של המבחנות למטה מ-120 ל-100 */
+    width: 100px;
     cursor: grab;
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
 }
 
 .answer-btn {
-    padding: 12px 30px; /* הקטנה קלה של הריפוד הפנימי */
-    font-size: 1.3rem; /* הקטנה קלה של הטקסט בכפתורים */
+    padding: 12px 30px;
+    font-size: 1.3rem;
     border-radius: 15px;
     border: 3px solid #3498db;
     background: white;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.answer-btn:hover { background: #3498db; color: white; }
-
-/* כפתור שיאים */
-.nav-btn-leaderboard {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    background: #0047AB;
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.answer-btn:hover { 
+    background: #3498db; 
+    color: white; 
 }
 
-/* מסך סיום חגיגי */
+/* מסך סיום */
 .hidden-overlay {
     position: fixed;
     top: 0;
@@ -175,22 +199,12 @@ body, html {
     z-index: 2000;
     visibility: hidden;
     opacity: 0;
-    transition: 0.5s;
 }
 
 .show-finish {
     visibility: visible !important;
     opacity: 1 !important;
 }
-
-.finish-content {
-    padding: 50px;
-    text-align: center;
-    transform: scale(0.7);
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.show-finish .finish-content { transform: scale(1); }
 
 .star {
     font-size: 4rem;
@@ -199,5 +213,5 @@ body, html {
 }
 
 @keyframes sparkle {
-    to { transform: scale(1.3); filter: brightness(1.3) drop-shadow(0 0 15px gold); }
+    to { transform: scale(1.3); filter: brightness(1.2); }
 }

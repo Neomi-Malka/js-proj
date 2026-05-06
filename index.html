@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>מלך האחוזים - כניסה</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/game.css">
 </head>
 <body class="game-page login-layout">
@@ -24,18 +25,36 @@
             </div>
         </div>
 
-        <button onclick="startGame()" class="start-btn">התחל במחקר! 🚀</button>
+        <div class="button-group">
+            <!-- כפתור התחלה -->
+            <button onclick="startGame()" class="start-btn">התחל במחקר! 🚀</button>
+            
+            <!-- כפתור הוראות -->
+            <button onclick="location.href='pages/instructions.html'" class="info-btn">איך משחקים? 🔬</button>
+            
+            <!-- כפתור שיאים (הוחזר למסך) -->
+            <button onclick="location.href='pages/leaderboard.html'" class="leaderboard-btn">טבלת שיאים 🏆</button>
+        </div>
     </div>
 
     <script>
-        function startGame() {
+        /**
+         * @function startGame
+         * @description שומר נתונים ועובר למסך המשחק
+         */
+        const startGame = () => {
             const nameField = document.getElementById('username-input');
             const name = nameField.value.trim() || "אורח";
             const level = document.querySelector('input[name="level"]:checked').value;
             
-            localStorage.setItem('currentPlayer', JSON.stringify({ name: name, level: parseInt(level) }));
-            window.location.href = 'pages/game.html';
-        }
+            localStorage.setItem('currentPlayer', JSON.stringify({ 
+                name: name, 
+                level: parseInt(level),
+                date: new Date().toLocaleDateString()
+            }));
+            
+            window.location.href = 'pages/game.html?level=' + level;
+        };
     </script>
 </body>
 </html>
