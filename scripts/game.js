@@ -121,21 +121,16 @@ const handleFinish = (isWin) => {
     isProcessing = true;
     clearInterval(timerId);
     
+    // שליפת האלמנט המתאים לפי ה-ID שהגדרנו ב-HTML
     const sound = document.getElementById(isWin ? 'sound-success' : 'sound-fail');
-    sound.play();
-
-    if (isWin) {
-        score += 10;
-        document.getElementById('score').textContent = score;
+    
+    if (sound) {
+        sound.currentTime = 0; // מאפס את הסאונד להתחלה למקרה של ניגון חוזר
+        sound.play().catch(error => {
+            console.error("השמע נחסם על ידי הדפדפן או שהנתיב שגוי:", error);
+        });
     }
-
-    setTimeout(() => {
-        sound.pause();
-        sound.currentTime = 0;
-        currentIndex++;
-        loadQuestion();
-    }, 3000);
-};
+    }
 
 /**
  * ניהול הטיימר
