@@ -2,7 +2,6 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <!-- שורת הרספונסיביות הקריטית -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מלך האחוזים - כניסה</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -33,6 +32,19 @@
             <button onclick="location.href='pages/leaderboard.html'" class="leaderboard-btn">טבלת שיאים 🏆</button>
         </div>
     </div>
-    <!-- כאן מגיע הסקריפט שלך... -->
+
+    <script>
+        const startGame = () => {
+            const nameField = document.getElementById('username-input');
+            const name = nameField.value.trim() || "אורח";
+            const level = document.querySelector('input[name="level"]:checked').value;
+            localStorage.setItem('currentPlayer', JSON.stringify({ 
+                name: name, 
+                level: parseInt(level),
+                date: new Date().toLocaleDateString()
+            }));
+            window.location.href = 'pages/game.html?level=' + level;
+        };
+    </script>
 </body>
 </html>

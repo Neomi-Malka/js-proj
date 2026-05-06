@@ -1,14 +1,10 @@
-/**
- * @file game.css - עיצוב רספונסיבי למעבדת האחוזים
- */
-
-/* הגדרות כלליות */
+/* הגדרות יסוד */
 body, html {
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    height: 100%;
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    /* הסרת overflow: hidden כדי לאפשר גלילה במובייל אם התוכן חורג */
+    overflow: hidden; /* מניעת גלילה מיותרת */
 }
 
 .game-page {
@@ -17,152 +13,104 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     padding: 10px;
     box-sizing: border-box;
 }
 
-/* סגנון כרטיסיית זכוכית */
+/* כרטיסיות זכוכית */
 .main-glass {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     border: 3px solid #3498db;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    box-sizing: border-box;
-}
-
-.login-layout {
-    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .login-card {
     padding: 30px;
-    width: 100%;
-    max-width: 450px; /* רוחב מקסימלי למסך גדול */
+    width: 90%;
+    max-width: 450px;
     text-align: center;
 }
 
-.styled-input {
-    width: 90%;
-    max-width: 350px;
-    padding: 12px;
-    margin: 20px 0;
-    border: 2px solid #3498db;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    outline: none;
-}
-
-.button-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.start-btn {
-    background: #2ecc71;
-    color: white;
-    padding: 15px 40px;
-    border: none;
-    border-radius: 15px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 100%;
-    max-width: 280px;
-}
-
-.info-btn, .leaderboard-btn {
-    background: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    max-width: 200px;
-}
-
-.leaderboard-btn { background: #f39c12; }
-
-/* רכיבי דף המשחק */
+/* אלמנטים של דף המשחק */
 .game-header {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding: 15px;
     width: 100%;
+    height: 8vh;
+    margin-bottom: 5px;
+}
+
+.header-item {
+    background: white;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .story-card {
-    width: 90%;
+    width: 95%;
     max-width: 600px;
     padding: 15px;
-    margin: 15px 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.1rem;
 }
 
 .empty-slot {
-    width: 180px;
-    height: 240px;
-    border: 5px dashed #3498db;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    margin: 0 auto;
-}
-
-.options-row {
+    width: 150px;
+    height: 200px;
+    border: 4px dashed #3498db;
+    background: rgba(255,255,255,0.4);
+    border-radius: 15px;
     display: flex;
-    flex-wrap: wrap; /* מאפשר למבחנות לרדת שורה */
-    gap: 15px;
     justify-content: center;
-    padding: 10px;
+    align-items: center;
+    margin: 10px 0;
 }
 
-.mini-tube-img {
-    width: 80px; /* הקטנה קלה למובייל */
-    height: auto;
-}
-
-/* התאמות למסכים קטנים (מובייל) */
-@media (max-width: 480px) {
-    h1 { font-size: 1.5rem; }
-    .login-card { padding: 20px; }
-    .start-btn { font-size: 1.1rem; }
-    .mini-tube-img { width: 65px; }
-    .empty-slot { width: 140px; height: 200px; }
-    .answer-btn { padding: 8px 15px; font-size: 1rem; }
-}
-/* אזור האפשרויות - גמיש ורספונסיבי */
-.options-row {
-    display: flex;
-    flex-wrap: wrap; /* מאפשר למבחנות לרדת שורה במקום להצטמצם */
-    gap: 15px;
-    justify-content: center;
-    padding: 10px;
+/* אזור האפשרויות בתחתית */
+.options-area {
+    margin-top: auto;
     width: 100%;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 .mini-tube-img {
-    width: 80px; /* הגדלה משמעותית של המבחנה */
-    height: auto;
+    width: 70px; /* גודל נוח למחשב ולמובייל */
     cursor: grab;
-    touch-action: none; /* חיוני למניעת גלילת הדף בזמן גרירה */
+    transition: 0.2s;
 }
 
-/* התאמה ספציפית למסכים קטנים מאוד */
-@media (max-width: 480px) {
-    .mini-tube-img {
-        width: 100px; /* במובייל הן יהיו אפילו גדולות יותר */
-    }
-    
-    .empty-slot {
-        width: 160px;
-        height: 220px;
-    }
+.answer-btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: 2px solid #3498db;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* התאמות למובייל */
+@media (max-width: 600px) {
+    .empty-slot { width: 120px; height: 160px; }
+    .mini-tube-img { width: 60px; }
+    .story-card { font-size: 0.95rem; }
+    .header-item { font-size: 0.75rem; padding: 5px; }
 }
